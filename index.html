@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maersk</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h2>Shuffle and Sort</h2>
+    <div class="wrapper">
+      <div class="buttons">
+        <button id="btn1" type="button" onclick="shuffle()">Shuffle</button>
+        <button id="btn2" type="button" onclick="sort()">Sort</button>
+      </div>
+
+      <div class="container" id="gridOfSquares">
+          <div class="cell" id="div1">1</div>
+          <div class="cell" id="div2">2</div>
+          <div class="cell" id="div3">3</div>
+          <div class="cell" id="div4">4</div>
+          <div class="cell" id="div5">5</div>
+          <div class="cell" id="div6">6</div>
+          <div class="cell" id="div7">7</div>
+          <div class="cell" id="div8">8</div>
+          <div class="cell" id="div9">9</div>
+      </div>
+    </div>
+
+    <div>
+      <h4><i>Shuffle and sort by Rahul Changlani</i></h4>
+    </div>
+
+    <script>
+      function sort() {
+        var main = document.getElementById("gridOfSquares");
+
+        [].map
+          .call(main.children, Object)
+          .sort(function (a, b) {
+            return +a.id.match(/\d+/) - +b.id.match(/\d+/);
+          })
+          .forEach(function (elem) {
+            main.appendChild(elem);
+          });
+      }
+
+      function shuffle() {
+        var main = document.getElementById("gridOfSquares");
+        for (var i = main.children.length; i >= 0; i--) {
+            main.appendChild(main.children[Math.random() * i | 0]);
+        }
+      }
+    </script>
+  </body>
 </html>
